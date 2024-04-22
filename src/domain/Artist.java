@@ -1,43 +1,86 @@
 package domain;
 
+/**
+ * Клас Artist представляє художника, який є підкласом Employee.
+ * Він додає інформацію про навички художника.
+ */
 public class Artist extends Employee {
 
-    public Artist(String[] skiils, String name, String jobTitle, int level, String dept) {
+    /**
+     * Список навичок художника.
+     */
+    private String[] skills;
+
+    /**
+     * Створює нового художника з визначеними параметрами.
+     *
+     * @param skills Список навичок художника
+     * @param name Ім'я художника
+     * @param jobTitle Посада художника
+     * @param level Рівень художника
+     * @param dept Відділ, в якому працює художник
+     */
+    public Artist(String[] skills, String name, String jobTitle, int level, String dept) {
         super(name, jobTitle, level, dept);
-        this.skiils = skiils;
+        this.skills = skills;
     }
 
-    public Artist(String[] skiils) {
+    /**
+     * Створює художника з визначеним списком навичок.
+     *
+     * @param skills Список навичок
+     */
+    public Artist(String[] skills) {
         super();
-        this.skiils = skiils;
+        this.skills = skills;
     }
-    
+
+    /**
+     * Створює порожнього художника з масивом навичок, який має 10 елементів.
+     */
     public Artist() {
         super();
-        this.skiils = new String[10];
+        this.skills = new String[10];
     }
 
+    /**
+     * Повертає рядкове представлення художника.
+     *
+     * @return Рядок, що містить інформацію про художника та його навички
+     */
     @Override
     public String toString() {
-        return super.toString()+"\nSkills: "+getSkills();
+        return super.toString() + "\nSkills: " + getSkills();
     }
 
-    private String[] skiils;
-
+    /**
+     * Повертає список навичок у вигляді рядка.
+     *
+     * @return Рядок, що містить навички художника
+     */
     public String getSkills() {
-        String s = "";
-        for (String e : skiils) {
-            s = s + e + ", ";
+        StringBuilder s = new StringBuilder();
+        for (String e : skills) {
+            s.append(e).append(", ");
         }
-       s=s.substring(0, s.length() - 2);
-        return s;
+        return s.substring(0, s.length() - 2);
     }
 
+    /**
+     * Встановлює список навичок для художника.
+     *
+     * @param skills Список нових навичок
+     */
     public void setSkills(String[] skills) {
-        this.skiils=skills;
+        this.skills = skills;
     }
 
-    public String[] getSkillsLSist() {
-        return skiils;
+    /**
+     * Повертає масив навичок.
+     *
+     * @return Масив навичок художника
+     */
+    public String[] getSkillsList() {
+        return skills;
     }
 }
